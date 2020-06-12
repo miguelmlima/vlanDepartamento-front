@@ -11,7 +11,18 @@
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <script>
         function myFunction() {
-            fetch("http://localhost:8080/api/user/1950002").then( resp => {
+            var data = {
+                "identifier": 1950002,
+                "password": "saopaulo"
+            }
+            // The parameters we are gonna pass to the fetch function
+            var fetchData = {
+                method: 'POST',
+                body: data,
+                headers: new Headers()
+            }
+        
+            fetch("http://localhost:8080/api/login", fetchData).then(resp => {
                 console.log(resp.json())
             })
         }
@@ -115,7 +126,6 @@
     </div>
     <script src="../js/app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-    <script src="main.js"></script>
 </body>
 
 </html>
