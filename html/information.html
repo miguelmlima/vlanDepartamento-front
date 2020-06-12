@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,48 +9,59 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <script>
+        function getUserInfo() {
+            var resp = fetch("http://localhost:8080/api/user/1950002").then(resp => {
+                console.log(resp.json())
+            })
+            document.getElementById("userInfo").innerHTML = resp
+        }
+        window.onload = getUserInfo;
+    </script>
 </head>
+
 <body>
     <div class="container">
-        
-            <div class="second-column">
-                <h2 class="title title-second">Info</h2>
-                
-                <p class="description description-second">VLan Manager</p>
-                <form class="form">   
-                    <img src="../img/foto.jpeg" alt="Foto" width="200" height="150">
-<!--                  
+
+        <div class="second-column">
+            <h2 class="title title-second">Info</h2>
+
+            <p class="description description-second">VLan Manager</p>
+            <form class="form">
+                <img src="../img/foto.jpeg" alt="Foto" width="200" height="150">
+                <!--                  
                     class="img-thumbnail mb-3"></img>
                     </label>                   
                    -->
-                    
-                    <label class="label-input" for="">                                       
-                   
-                        <textarea type="text" name="w3review" rows="8" cols="120">
+
+                <label class="label-input" for="">
+
+                    <textarea id="userInfo" type="text" name="w3review" rows="8" cols="120">
+
+                    </textarea>
+                </label>
+
+                <button class="btn btn-second">
+                    <a href="index.html">Logout</a></button>
+            </form>
+        </div><!-- second column -->
+        <div class="second-column">
+            <h2 class="title title-second">Histórico de Mudanças</h2>
+
+            <p class="description description-second">VLan Manager</p>
+            <form class="form">
+                <label class="label-input" for="">
+                    <textarea type="text" name="w3review" rows="8" cols="120">
                             At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
                             </textarea>
-                    </label>                    
-                    
-                    <button class="btn btn-second">
-                        <a href="index.html">Logout</a></button>        
-                </form>
-            </div><!-- second column -->
-            <div class="second-column">
-                <h2 class="title title-second">Histórico de Mudanças</h2>
-                
-                <p class="description description-second">VLan Manager</p>
-                <form class="form">
-                    <label class="label-input" for="">
-                        <textarea type="text" name="w3review" rows="8" cols="120">
-                            At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
-                            </textarea>
-                    </label> 
-                    <button class="btn btn-second">+Adicionar</button>        
-                </form>
-                
-            </div>
-        </div>     
+                </label>
+                <button class="btn btn-second">+Adicionar</button>
+            </form>
+
+        </div>
+    </div>
     </div>
     <script src="../js/app.js"></script>
 </body>
+
 </html>
