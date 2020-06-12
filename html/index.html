@@ -13,10 +13,10 @@
         function myFunction() {
             var fetchData = {
                 method: 'POST',
-                body: {
+                body: JSON.stringify({
                     "identifier": 1950002,
                     "password": "saopaulo"
-                },
+                }),
                 headers: new Headers()
             }
 
