@@ -11,17 +11,15 @@
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <script>
         function myFunction() {
-            var data = {
-                "identifier": 1950002,
-                "password": "saopaulo"
-            }
-            // The parameters we are gonna pass to the fetch function
             var fetchData = {
                 method: 'POST',
-                body: data,
+                body: {
+                    "identifier": 1950002,
+                    "password": "saopaulo"
+                },
                 headers: new Headers()
             }
-        
+
             fetch("http://localhost:8080/api/login", fetchData).then(resp => {
                 console.log(resp.json())
             })
