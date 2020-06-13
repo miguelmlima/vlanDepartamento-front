@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <script>
-        function getUserInfo() {
+        window.onload = function () {
             fetch("http://localhost:8080/api/user/1950002").then(
                 function (response) {
                     if (response.status !== 200) {
@@ -22,9 +22,7 @@
                         document.getElementById("userInfo").innerHTML = info;
                     });
                 })
-        }
 
-        function getUserHistory() {
             fetch("http://localhost:8080/api/user/1950002/tickets").then(
                 function (response) {
                     if (response.status !== 200) {
@@ -37,9 +35,6 @@
                     });
                 })
         }
-
-        window.onload = getUserInfo;
-        window.onload = getUserHistory;
     </script>
 </head>
 
@@ -75,7 +70,7 @@
             <form class="form">
                 <label class="label-input" for="">
                     <textarea id="history" type="text" name="w3review" rows="8" cols="120">
-                        
+
                     </textarea>
                 </label>
                 <button class="btn btn-second">+Adicionar</button>
