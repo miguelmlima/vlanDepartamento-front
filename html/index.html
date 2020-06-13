@@ -26,7 +26,7 @@
             fetch("http://localhost:8080/api/login", fetchData).then(
                 function (response) {
                     if (response.status !== 202) {
-                        console.log('Wrong name or password.');
+                        alert("Error.")
                         return;
                     }
 

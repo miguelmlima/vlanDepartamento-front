@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,42 +9,75 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-</head>
-<body>
-          
-            <div class="second-column">
-                <h2 class="title title-second">VLan Manager</h2>
-                
-                <form class="form">
-                    <label class="label-input" for="">
-                 
-                        <input type="text" placeholder="Dep:" >
-                        
-                        <input type="radio" name="departamento" id="1" value="Marketing">
-                        <label for="dep1">MKT</label></n>
-                        
-                        <input type="radio" name="departamento" id="2" value="Compras">
-                        <label for="dep2">COMP</label>
-                      
-                        <input type="radio" name="departamento" id="3" value="TI/Suporte">
-                        <label for="dep3">TI/SUP</label>
-                      
-                        <input type="radio" name="departamento" id="4" value="TI/Sistemas">
-                        <label for="dep4">TI/SI</label>
+    <script>
+        function changeDepartment() {
+            
+            var list = document.getElementById('departament');
+            var INDEX = list.selectedIndex;
+            var fetchData = {
+                method: 'POST',
+                body: JSON.stringify({
+                    "vlanId": Number(list[INDEX].value),
+                    "reason": document.getElementById("justificativa").value
+                }),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+            }
 
-                        <input type="radio" name="departamento" id="5" value="Numerário">
-                        <label for="dep5">NUM</label>
-                    </label>
-                    
-                    <label class="label-input" for="">
-                        <i class="icon-modify"></i>
-                        <input type="text" placeholder="Justificativa">
-                    </label> 
-                    <button class="btn btn-second">Enviar</button>        
-                    <button class="btn btn-second" >
-                        <a href="information.html">Voltar</a> </button> 
-                </form>
-            </div>
-        </div>
+            fetch("http://localhost:8080/api/user/1950002/tickets", fetchData).then(
+                function (response) {
+                    if (response.status !== 200) {
+                        alert("Error.")
+                        return;
+                    }
+                    response.text().then(function (data) {
+                        console.log(data);
+                    });
+                })
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="second-column">
+        <h2 class="title title-second">VLan Manager</h2>
+
+        <form class="form">
+            <label class="label-input" for="">
+
+                <select name="cars" id="departament">
+                    <option value="1">MKT</option>
+                    <option value="2">COM</option>
+                    <option value="3">TI/SUP</option>
+                    <option value="4">TI/SIS</option>
+                    <option value="5">NUM</option>
+                </select>
+                <!-- <input type="text" placeholder="Dep:">
+                <input type="radio" name="departamento" id="1" value="Marketing">
+                <label for="dep1">MKT</label></n>
+                <input type="radio" name="departamento" id="2" value="Compras">
+                <label for="dep2">COMP</label>
+                <input type="radio" name="departamento" id="3" value="TI/Suporte">
+                <label for="dep3">TI/SUP</label>
+                <input type="radio" name="departamento" id="4" value="TI/Sistemas">
+                <label for="dep4">TI/SI</label>
+                <input type="radio" name="departamento" id="5" value="Numerário">
+                <label for="dep5">NUM</label> -->
+            </label>
+
+            <label class="label-input" for="">
+                <i class="icon-modify"></i>
+                <input id="justificativa" type="text" placeholder="Justificativa">
+            </label>
+            <button type="button" onclick="changeDepartment()" class="btn btn-second" id="post">Enviar</button>
+            <button class="btn btn-second">
+                <a href="information.html">Voltar</a> </button>
+        </form>
+    </div>
+    </div>
 </body>
+
 </html>
