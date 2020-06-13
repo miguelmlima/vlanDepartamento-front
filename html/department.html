@@ -41,6 +41,14 @@
                     });
                 })
         }
+
+        function goTo() {
+            var queryString = window.location.search;
+            var urlParams = new URLSearchParams(queryString);
+            var userId = urlParams.get('id')
+
+            window.location.href = 'information.html' + '?id=' + id;
+        }
     </script>
 </head>
 
@@ -77,8 +85,7 @@
                 <input id="justificativa" type="text" placeholder="Justificativa">
             </label>
             <button type="button" onclick="changeDepartment()" class="btn btn-second" id="post">Enviar</button>
-            <button class="btn btn-second">
-                <a href="information.html">Voltar</a> </button>
+            <button type="button" onclick="goTo()" class="btn btn-second" id="post">Voltar</button>
         </form>
     </div>
     </div>
