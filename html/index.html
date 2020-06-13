@@ -14,8 +14,8 @@
             var fetchData = {
                 method: 'POST',
                 body: JSON.stringify({
-                    "identifier": 1950002,
-                    "password": "saopaulo"
+                    "identifier": Number(document.getElementById("name").value),
+                    "password": document.getElementById("senha").value
                 }),
                 headers: {
                     'Accept': 'application/json',
@@ -23,9 +23,14 @@
                 },
             } 
 
-            fetch("http://localhost:8080/api/login", fetchData).then(resp => {
-                console.log(resp.json())
-            })
+            fetch("http://localhost:8080/api/login", fetchData).then(
+                function (response) {
+                    if (response.status !== 202) {
+                        console.log('Wrong name or password.');
+                        return;
+                    }
+                    console.log("Logged.")
+                })
         }
     </script>
 </head>
@@ -64,13 +69,13 @@
                 <form id="formLogin" class="form">
                     <label class="label-input" for="">
                         <i class="far fa-user icon-modify"></i>
-                        <input type="text" placeholder="Name">
+                        <input id="name" type="text" placeholder="Name">
                     </label>
 
 
                     <label class="label-input" for="">
                         <i class="fas fa-lock icon-modify"></i>
-                        <input type="password" placeholder="Password">
+                        <input id="senha" type="password" placeholder="Password">
                     </label>
 
 
