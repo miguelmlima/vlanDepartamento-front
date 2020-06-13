@@ -21,7 +21,7 @@
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-            } 
+            }
 
             fetch("http://localhost:8080/api/login", fetchData).then(
                 function (response) {
@@ -115,21 +115,19 @@
                     </ul>
                 </div><!-- social media -->
                 <p class="description description-second">or use your username account:</p>
-                <form class="form">
-
+                <form id="formLogin" class="form">
                     <label class="label-input" for="">
                         <i class="far fa-user icon-modify"></i>
                         <input id="name" type="text" placeholder="Name">
                     </label>
+
 
                     <label class="label-input" for="">
                         <i class="fas fa-lock icon-modify"></i>
                         <input id="senha" type="password" placeholder="Password">
                     </label>
 
-                    <a class="password" href="#">forgot your password?</a>
-                    
-                    <button type="button" onclick="logIn()" class="btn btn-second" id="post">sign up</button>
+                    <button type="button" onclick="logIn()" class="btn btn-second" id="post">sign in</button>
                 </form>
             </div><!-- second column -->
         </div><!-- second-content -->
