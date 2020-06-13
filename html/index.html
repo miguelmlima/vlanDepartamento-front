@@ -29,8 +29,10 @@
                         console.log('Wrong name or password.');
                         return;
                     }
+
+                    var id = Number(document.getElementById("name").value)
                     console.log("Logged.")
-                    window.location.href = 'information.html' + '?id=' + fetchData.body.identifier;
+                    window.location.href = 'information.html' + '?id=' + id;
                 })
         }
     </script>
@@ -126,7 +128,8 @@
                     </label>
 
                     <a class="password" href="#">forgot your password?</a>
-                    <button class="btn btn-second" onclick="logIn()" id="post">sign in</button>
+                    
+                    <button type="button" onclick="logIn()" class="btn btn-second" id="post">sign up</button>
                 </form>
             </div><!-- second column -->
         </div><!-- second-content -->
