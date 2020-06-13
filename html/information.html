@@ -11,10 +11,17 @@
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <script>
         function getUserInfo() {
-            var resp = fetch("http://localhost:8080/api/user/1950002").then(resp => {
-                console.log(resp.json())
-            })
-            document.getElementById("userInfo").innerHTML = resp
+            var resp = fetch("http://localhost:8080/api/user/1950002").then(
+                function (response) {
+                    if (response.status !== 200) {
+                        console.log('Problem in fetching');
+                        return;
+                    }
+                    response.text().then(function (data) {
+                        console.log(data);
+                        document.getElementById("userInfo").innerHTML = info;
+                    });
+                })
         }
         window.onload = getUserInfo;
     </script>
