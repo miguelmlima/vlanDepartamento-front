@@ -11,7 +11,9 @@
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <script>
         window.onload = function () {
-            const userId = urlParams.get('id')
+            var queryString = window.location.search;
+            var urlParams = new URLSearchParams(queryString);
+            var userId = urlParams.get('id')
 
             fetch("http://localhost:8080/api/user/" + userId).then(
                 function (response) {
