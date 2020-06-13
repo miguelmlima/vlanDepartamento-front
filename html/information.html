@@ -19,7 +19,7 @@
                     }
                     response.text().then(function (data) {
                         console.log(data);
-                        document.getElementById("userInfo").innerHTML = info;
+                        document.getElementById("userInfo").innerHTML = data;
                     });
                 })
 
@@ -31,7 +31,7 @@
                     }
                     response.text().then(function (data) {
                         console.log(data);
-                        document.getElementById("history").innerHTML = info;
+                        document.getElementById("history").innerHTML = data;
                     });
                 })
         }
@@ -73,7 +73,7 @@
 
                     </textarea>
                 </label>
-                <button class="btn btn-second">+Adicionar</button>
+                <button class="btn btn-second"><a href="department.html">+Adicionar</a></button>
             </form>
 
         </div>
