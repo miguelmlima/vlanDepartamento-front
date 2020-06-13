@@ -11,7 +11,7 @@
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <script>
         function getUserInfo() {
-            var resp = fetch("http://localhost:8080/api/user/1950002").then(
+            fetch("http://localhost:8080/api/user/1950002").then(
                 function (response) {
                     if (response.status !== 200) {
                         console.log('Problem in fetching');
@@ -23,7 +23,23 @@
                     });
                 })
         }
+
+        function getUserHistory() {
+            fetch("http://localhost:8080/api/user/1950002/tickets").then(
+                function (response) {
+                    if (response.status !== 200) {
+                        console.log('Problem in fetching');
+                        return;
+                    }
+                    response.text().then(function (data) {
+                        console.log(data);
+                        document.getElementById("history").innerHTML = info;
+                    });
+                })
+        }
+
         window.onload = getUserInfo;
+        window.onload = getUserHistory;
     </script>
 </head>
 
@@ -58,9 +74,9 @@
             <p class="description description-second">VLan Manager</p>
             <form class="form">
                 <label class="label-input" for="">
-                    <textarea type="text" name="w3review" rows="8" cols="120">
-                            At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
-                            </textarea>
+                    <textarea id="history" type="text" name="w3review" rows="8" cols="120">
+                        
+                    </textarea>
                 </label>
                 <button class="btn btn-second">+Adicionar</button>
             </form>
